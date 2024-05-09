@@ -92,8 +92,7 @@ class _EmailOfForgetPasswordViewState extends State<EmailOfForgetPasswordView> {
                                   text: 'confirm',
                                   onTap: () async {
                                     String url;
-                                    isLoading = true;
-                                    setState(() {});
+
                                     if (widget.viewId == ChildLogInView.id) {
                                       url =
                                           "http://10.0.2.2/project/children/forgetpassword.php";
@@ -102,6 +101,8 @@ class _EmailOfForgetPasswordViewState extends State<EmailOfForgetPasswordView> {
                                           "http://10.0.2.2/project/doctor/forgetpassword.php";
                                     }
                                     if (formKey.currentState!.validate()) {
+                                      isLoading = true;
+                                      setState(() {});
                                       AuthenticationModel model =
                                           await ForgetPasswordService()
                                               .forgetPassword(
