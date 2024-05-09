@@ -105,7 +105,9 @@ class _EmailOfForgetPasswordViewState extends State<EmailOfForgetPasswordView> {
                                       AuthenticationModel model =
                                           await ForgetPasswordService()
                                               .forgetPassword(
-                                                  email: gmail.text);
+                                        email: gmail.text,
+                                        url: url,
+                                      );
                                       isLoading = false;
                                       setState(() {});
                                       printResponse(model);

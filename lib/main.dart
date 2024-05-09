@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         ChangeTherapistView.id: (context) => ChangeTherapistView(),
         ChildReportView.id: (context) => ChildReportView(),
         // VerificationCodeView.id: (context) => VerificationCodeView.second(),
-        EmailOfForgetPasswordView.id: (context) => EmailOfForgetPasswordView(),
+        // EmailOfForgetPasswordView.id: (context) => EmailOfForgetPasswordView(),
         // NewPasswordView.id: (context) => NewPasswordView(),
       },
       initialRoute: TherapistOrChildView.id,

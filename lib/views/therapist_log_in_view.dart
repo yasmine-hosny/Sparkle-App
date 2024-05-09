@@ -70,8 +70,15 @@ class TherapistLogInView extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(
-                          context, EmailOfForgetPasswordView.id);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return EmailOfForgetPasswordView(
+                                viewId: TherapistLogInView.id);
+                          },
+                        ),
+                      );
                     },
                     child: const Text(
                       '   Forget password?',
