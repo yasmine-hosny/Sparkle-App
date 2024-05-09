@@ -107,8 +107,8 @@ class _NewPasswordViewState extends State<NewPasswordView> {
                                                   url: url);
                                       print(widget.gmail);
                                       printResponse(model);
-                                      therapistUpdatePasswordMethod(
-                                          model, password, context);
+                                      updatePasswordMethod(model, password,
+                                          context, widget.backViewId);
                                     } catch (e) {
                                       print(e.toString());
                                     }
