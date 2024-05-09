@@ -9,13 +9,14 @@ import 'package:graduation_project/widgets/custom_text_widget.dart';
 class VerificationCodeView extends StatefulWidget {
   static String id = 'verificationCodeViewId';
   final int verificationCode;
-  final String? nextView, email;
+  final String? nextView, email, backViewId;
 
   // const VerificationCodeView.second() : verificationCode = 4;
   const VerificationCodeView(
       {required this.verificationCode,
       @required this.nextView,
-      @required this.email});
+      @required this.email,
+      @required this.backViewId});
 
   @override
   State<VerificationCodeView> createState() => _VerificationCodeViewState();
@@ -109,7 +110,10 @@ class _VerificationCodeViewState extends State<VerificationCodeView> {
                               } else {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return NewPasswordView(gmail: widget.email!);
+                                  return NewPasswordView(
+                                    gmail: widget.email!,
+                                    backViewId: widget.backViewId!,
+                                  );
                                 }));
                               }
                             } else if (code == null) {

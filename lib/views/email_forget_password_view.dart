@@ -147,6 +147,7 @@ class _EmailOfForgetPasswordViewState extends State<EmailOfForgetPasswordView> {
             return VerificationCodeView(
               verificationCode: model.verificationCode!,
               email: gmail.text,
+              backViewId: widget.viewId,
             );
           },
         ),
