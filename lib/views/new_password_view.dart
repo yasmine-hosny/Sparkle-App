@@ -1,20 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/constants.dart';
-import 'package:graduation_project/helper/show_snack_bar.dart';
 import 'package:graduation_project/methods/print_response_method.dart';
 import 'package:graduation_project/methods/therapist_update_password_method.dart';
 import 'package:graduation_project/models/authentication_model.dart';
 import 'package:graduation_project/services/update_password_service.dart';
+import 'package:graduation_project/views/child_log_in_view.dart';
 import 'package:graduation_project/views/therapist_log_in_view.dart';
 import 'package:graduation_project/widgets/custom_button_widget.dart';
 import 'package:graduation_project/widgets/custom_text_form_field_widget.dart';
 
-class NewPasswordView extends StatelessWidget {
-  String gmail;
-  NewPasswordView({super.key, required this.gmail});
+class NewPasswordView extends StatefulWidget {
+  String gmail, backViewId;
+  NewPasswordView({
+    super.key,
+    required this.gmail,
+    required this.backViewId,
+  });
   static String id = 'ForgetPasswordView';
+
+  @override
+  State<NewPasswordView> createState() => _NewPasswordViewState();
+}
+
+class _NewPasswordViewState extends State<NewPasswordView> {
   final TextEditingController password = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,14 +89,23 @@ class NewPasswordView extends StatelessWidget {
                             CustomButton(
                                 text: 'confirm',
                                 onTap: () async {
+                                  String url;
+                                  if (widget.backViewId == ChildLogInView.id) {
+                                    url =
+                                        "http://10.0.2.2/project/children/updatepass.php";
+                                  } else {
+                                    url =
+                                        "http://10.0.2.2/project/doctor/updatepass.php";
+                                  }
                                   if (formKey.currentState!.validate()) {
                                     try {
                                       AuthenticationModel model =
                                           await UpdatePasswordService()
                                               .updatePassword(
                                                   newPassword: password.text,
-                                                  email: gmail);
-                                      print(gmail);
+                                                  email: widget.gmail,
+                                                  url: url);
+                                      print(widget.gmail);
                                       printResponse(model);
                                       therapistUpdatePasswordMethod(
                                           model, password, context);
@@ -100,7 +121,7 @@ class NewPasswordView extends StatelessWidget {
                                 text: 'Cancel',
                                 onTap: () {
                                   Navigator.pushNamed(
-                                      context, TherapistLogInView.id);
+                                      context, widget.backViewId);
                                 }),
                           ],
                         )
