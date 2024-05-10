@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 
 class CustomRadio extends StatefulWidget {
-  const CustomRadio({super.key});
+  CustomRadio({super.key});
+  String group = "";
+  String getGroup() {
+    return group;
+  }
 
   @override
   State<CustomRadio> createState() => _CustomRadioState();
 }
 
 class _CustomRadioState extends State<CustomRadio> {
-  String? group;
-
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Radio(
             value: 'Girl',
-            groupValue: group,
+            groupValue: widget.group,
             onChanged: (value) {
               setState(() {
-                group = value!;
+                widget.group = value!;
               });
             }),
         const Text(
@@ -33,10 +35,10 @@ class _CustomRadioState extends State<CustomRadio> {
         ),
         Radio(
             value: 'Boy',
-            groupValue: group,
+            groupValue: widget.group,
             onChanged: (value) {
               setState(() {
-                group = value!;
+                widget.group = value!;
               });
             }),
         const Text(
