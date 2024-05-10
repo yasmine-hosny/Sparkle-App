@@ -30,7 +30,6 @@ class _ChildSignUpViewState extends State<ChildSignUpView> {
   TextEditingController birthday = TextEditingController();
   TextEditingController therapistName = TextEditingController();
 
-  String? group;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,45 +118,10 @@ class _ChildSignUpViewState extends State<ChildSignUpView> {
                         // errorText: 'this field is required',
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(
-                          left: 32,
-                        ),
-                        child: Row(
-                          children: [
-                            Radio(
-                                value: 'Girl',
-                                groupValue: group,
-                                onChanged: (value) {
-                                  setState(() {
-                                    group = value!;
-                                  });
-                                }),
-                            const Text(
-                              'Girl',
-                              style: TextStyle(
-                                fontSize: 24,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 60,
-                            ),
-                            Radio(
-                                value: 'Boy',
-                                groupValue: group,
-                                onChanged: (value) {
-                                  setState(() {
-                                    group = value!;
-                                  });
-                                }),
-                            const Text(
-                              'Boy',
-                              style: TextStyle(
-                                fontSize: 24,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                          padding: const EdgeInsets.only(
+                            left: 32,
+                          ),
+                          child: CustomRadio),
                       const SizedBox(
                         height: 30,
                       ),
